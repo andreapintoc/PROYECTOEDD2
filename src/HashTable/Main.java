@@ -16,15 +16,16 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        HashTable tabla = new HashTable(40);
+        HashTable<Articulo> tabla = new HashTable(40);
         String titulo = "Hola";
         String[] autores = {"Liz", "Yo"};
         String resumen = "Hola";
         String[] palabrasClave = {"Ciencia", "Musica"};
         Articulo art = new Articulo(titulo, autores, resumen, palabrasClave);
-        tabla.insertar(art);
+        tabla.insertar(art, art.getTitulo());
         Articulo arti = tabla.buscar(titulo);
         System.out.println(arti.getAutores()[0]);
+        System.out.println(arti.getAutores()[1]);
     }
     
 }

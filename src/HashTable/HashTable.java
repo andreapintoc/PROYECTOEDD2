@@ -10,13 +10,13 @@ import javax.swing.JOptionPane;
  *
  * @author Liz
  */
-public class HashTable {
+public class HashTable<T> {
     private int size;
-    private Articulo[] tabla;
+    private T[] tabla;
 
     public HashTable(int size) {
         this.size = size;
-        this.tabla = new Articulo[size];
+        this.tabla = (T[]) new Object[size];
         for (int i = 0; i < size; i++) {
             tabla[i] = null;
         }
@@ -42,31 +42,38 @@ public class HashTable {
         return valorHash;
     }
     
-    public Articulo buscar(String clave) {
-        Articulo art;
+    public T buscar(String clave) {
+        T obj;
         int posicion;
         posicion = this.hash(clave);
-        art = getTabla()[posicion];
-        return art;
+        obj = getTabla()[posicion];
+        return obj;
     }
 
     public boolean enTabla(String clave) {
         int posicion;
         posicion = this.hash(clave);
-        if (getTabla()[posicion] != null) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.tabla[posicion] != null;
     }
 
-    public void insertar(Articulo articulo) {
+    public void insertar(T objeto, String name) {
         int posicion;
-        if (this.enTabla(articulo.getTitulo())) {
-            JOptionPane.showMessageDialog(null, "El Articulo a insertar ya existe");
+        if (this.enTabla(name)) {
+            JOptionPane.showMessageDialog(null, "El objeto a insertar ya existe");
         } else {
-            posicion = this.hash(articulo.getTitulo());
-            this.getTabla()[posicion] = articulo;
+            posicion = this.hash(name);
+            this.tabla[posicion] = objeto;
+        }
+    }
+    
+    public void insertarL(PalabraClave pc, Articulo articulo) {
+        int posicion;
+        if (this.enTabla(pc.getName())) {
+            pc.getArticulos().insertBegin(articulo);
+        } else {
+            pc.getArticulos().insertBegin(articulo);
+            posicion = this.hash(pc.getName());
+            this.tabla[posicion] = (T) pc;
         }
     }
 
@@ -92,14 +99,14 @@ public class HashTable {
     /**
      * @return the tabla
      */
-    public Articulo[] getTabla() {
+    public T[] getTabla() {
         return tabla;
     }
 
     /**
      * @param tabla the tabla to set
      */
-    public void setTabla(Articulo[] tabla) {
+    public void setTabla(T[] tabla) {
         this.tabla = tabla;
     }
     

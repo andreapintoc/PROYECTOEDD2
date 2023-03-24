@@ -4,46 +4,62 @@
  */
 package Ventanas;
 
+import HashTable.Articulo;
+import HashTable.Autor;
 import HashTable.HashTable;
 import HashTable.HashTableAutor;
 import HashTable.ListaSimple;
+import HashTable.PalabraClave;
 
 /**
  *
  * @author Kevin
  */
 public class Global {
-    private static HashTable tablaArticulos;
-    private static HashTableAutor tablaAutores;
+    private static HashTable<Articulo> tablaArticulos;
+    private static HashTable<Autor> tablaAutores;
+    private static HashTable<PalabraClave> tablaPalabrasClave;
 
     /**
      * @return the tablaArticulos
      */
-    public static HashTable getTablaArticulos() {
+    public static HashTable<Articulo> getTablaArticulos() {
         return tablaArticulos;
     }
 
     /**
      * @param aTablaArticulos the tablaArticulos to set
      */
-    public static void setTablaArticulos(HashTable aTablaArticulos) {
+    public static void setTablaArticulos(HashTable<Articulo> aTablaArticulos) {
         tablaArticulos = aTablaArticulos;
     }
 
     /**
      * @return the tablaAutores
      */
-    public static HashTableAutor getTablaAutores() {
+    public static HashTable<Autor> getTablaAutores() {
         return tablaAutores;
     }
 
     /**
      * @param aTablaAutores the tablaAutores to set
      */
-    public static void setTablaAutores(HashTableAutor aTablaAutores) {
+    public static void setTablaAutores(HashTable<Autor> aTablaAutores) {
         tablaAutores = aTablaAutores;
     }
-    
-    
-    
+
+    /**
+     * @return the tablaPalabrasClave
+     */
+    public static HashTable<PalabraClave> getTablaPalabrasClave() {
+        return tablaPalabrasClave;
+    }
+
+    /**
+     * @param aTablaPalabrasClave the tablaPalabrasClave to set
+     */
+    public static void setTablaPalabrasClave(HashTable<PalabraClave> aTablaPalabrasClave) {
+        tablaPalabrasClave = aTablaPalabrasClave;
+    }
+
 }

@@ -175,10 +175,10 @@ public class Interfaz_1 extends javax.swing.JFrame {
         String Titulo_1 = Titulo.getText();
         String Autor_1 = Autor.getText();
         String[] autores = {Autor_1};
-        HashTable tabla = new HashTable(40);
+        HashTable<Articulo> tabla = new HashTable(40);
         String[] palabrasClave = {"Ciencia", "Musica"};
         Articulo art = new Articulo(Titulo_1, autores, archivo_completo , palabrasClave);
-        tabla.insertar(art);
+        tabla.insertar(art, art.getTitulo());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
