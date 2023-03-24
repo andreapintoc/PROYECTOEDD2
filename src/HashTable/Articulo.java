@@ -79,4 +79,22 @@ public class Articulo {
         this.PalabrasClave = PalabrasClave;
     }
     
+    public String MostrarResumen(){
+        String txt = "                   "+this.getTitulo()+"                   "+"\n"+"\n"+"\n";
+        txt += "Autores"+"\n";
+        for (int i = 0; i < this.Autores.length; i++) {
+            txt +=this.Autores[i]+"\n";
+        }
+        txt += "\nResumen\n"+this.Resumen+"\n"+"\n";
+        txt += "Palabras Claves: ";
+        for (int i = 0; i < this.PalabrasClave.length; i++) {
+            if(this.PalabrasClave[i] == this.PalabrasClave[0]){
+                txt += this.PalabrasClave[i];
+            }else{
+                txt += ","+this.PalabrasClave[i];
+            }
+        }
+        return txt;
+    }
+    
 }
