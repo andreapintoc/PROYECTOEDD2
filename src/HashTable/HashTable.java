@@ -83,7 +83,7 @@ public class HashTable {
     }
 
     /**
-     * @param size the size to set
+     * @param siz77e the size to set
      */
     public void setSize(int size) {
         this.size = size;
