@@ -6,7 +6,6 @@ package Ventanas;
 
 import HashTable.Articulo;
 import HashTable.Nodo;
-import HashTable.Autor;
 import HashTable.HashTable;
 import HashTable.HashTableParametroTabla;
 import HashTable.ListaSimple;

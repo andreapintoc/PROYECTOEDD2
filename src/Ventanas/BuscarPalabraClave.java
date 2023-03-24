@@ -8,7 +8,7 @@ import HashTable.Articulo;
 import HashTable.HashTable;
 import HashTable.HashTableParametroTabla;
 import HashTable.Nodo;
-import HashTable.PalabraClave;
+
 import HashTable.ParametroTabla;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;

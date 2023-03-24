@@ -5,11 +5,11 @@
 package Ventanas;
 
 import HashTable.Articulo;
-import HashTable.Autor;
+
 import HashTable.HashTable;
 import HashTable.HashTableParametroTabla;
 import HashTable.ListaSimple;
-import HashTable.PalabraClave;
+
 import HashTable.ParametroTabla;
 
 /**
