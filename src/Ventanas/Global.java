@@ -7,9 +7,10 @@ package Ventanas;
 import HashTable.Articulo;
 import HashTable.Autor;
 import HashTable.HashTable;
-import HashTable.HashTableAutor;
+import HashTable.HashTableParametroTabla;
 import HashTable.ListaSimple;
 import HashTable.PalabraClave;
+import HashTable.ParametroTabla;
 
 /**
  *
@@ -17,8 +18,8 @@ import HashTable.PalabraClave;
  */
 public class Global {
     private static HashTable<Articulo> tablaArticulos;
-    private static HashTable<Autor> tablaAutores;
-    private static HashTable<PalabraClave> tablaPalabrasClave;
+    private static HashTableParametroTabla tablaAutores;
+    private static HashTableParametroTabla tablaPalabrasClave;
 
     /**
      * @return the tablaArticulos
@@ -37,28 +38,28 @@ public class Global {
     /**
      * @return the tablaAutores
      */
-    public static HashTable<Autor> getTablaAutores() {
+    public static HashTableParametroTabla getTablaAutores() {
         return tablaAutores;
     }
 
     /**
      * @param aTablaAutores the tablaAutores to set
      */
-    public static void setTablaAutores(HashTable<Autor> aTablaAutores) {
+    public static void setTablaAutores(HashTableParametroTabla aTablaAutores) {
         tablaAutores = aTablaAutores;
     }
 
     /**
      * @return the tablaPalabrasClave
      */
-    public static HashTable<PalabraClave> getTablaPalabrasClave() {
+    public static HashTableParametroTabla getTablaPalabrasClave() {
         return tablaPalabrasClave;
     }
 
     /**
      * @param aTablaPalabrasClave the tablaPalabrasClave to set
      */
-    public static void setTablaPalabrasClave(HashTable<PalabraClave> aTablaPalabrasClave) {
+    public static void setTablaPalabrasClave(HashTableParametroTabla aTablaPalabrasClave) {
         tablaPalabrasClave = aTablaPalabrasClave;
     }
 

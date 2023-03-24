@@ -6,8 +6,10 @@ package Ventanas;
 
 import HashTable.Articulo;
 import HashTable.HashTable;
+import HashTable.HashTableParametroTabla;
 import HashTable.Nodo;
 import HashTable.PalabraClave;
+import HashTable.ParametroTabla;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -29,7 +31,7 @@ public class BuscarPalabraClave extends javax.swing.JFrame {
         
         /////// PRUEBAS
         HashTable<Articulo> tabla = new HashTable(40);
-        HashTable<PalabraClave> tablita = new HashTable(40);
+        HashTableParametroTabla tablita = new HashTableParametroTabla(40);
         String titulo = "Hola";
         String[] autores = {"Liz", "Yo"};
         String resumen = "Hola";
@@ -37,11 +39,11 @@ public class BuscarPalabraClave extends javax.swing.JFrame {
         String[] palabrasClav2 = {"Ciencia"};
         Articulo art = new Articulo("Hola", autores, resumen, palabrasClav);
         Articulo art2 = new Articulo("Holita", autores, resumen, palabrasClav2);
-        PalabraClave pc = new PalabraClave(palabrasClav[0]);
-        PalabraClave pc1 = new PalabraClave(palabrasClav[1]);
-        tablita.insertarL(pc, art);
-        tablita.insertarL(pc, art2);
-        tablita.insertarL(pc1, art);
+        ParametroTabla pc = new ParametroTabla(palabrasClav[0]);
+        ParametroTabla pc1 = new ParametroTabla(palabrasClav[1]);
+        tablita.insertar(pc, art);
+        tablita.insertar(pc, art2);
+        tablita.insertar(pc1, art);
         
         tabla.insertar(art, art.getTitulo());
         tabla.insertar(art2, art2.getTitulo());
@@ -186,7 +188,7 @@ public class BuscarPalabraClave extends javax.swing.JFrame {
         DefaultListModel modelo = new DefaultListModel();
         String palabraC = palabra.getText();
         if (!"".equals(palabraC)) {
-            PalabraClave PC = Global.getTablaPalabrasClave().buscar(palabraC);
+            ParametroTabla PC = Global.getTablaPalabrasClave().buscar(palabraC);
             if (PC != null) {
                 Nodo<Articulo> Npc = PC.getArticulos().getHead();
                 for (int j = 0; j < PC.getArticulos().getSize(); j++) {

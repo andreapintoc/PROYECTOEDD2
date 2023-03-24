@@ -8,8 +8,9 @@ import HashTable.Articulo;
 import HashTable.Nodo;
 import HashTable.Autor;
 import HashTable.HashTable;
-import HashTable.HashTableAutor;
+import HashTable.HashTableParametroTabla;
 import HashTable.ListaSimple;
+import HashTable.ParametroTabla;
 
 /**
  *
@@ -131,7 +132,7 @@ public class BuscarInvestigacionesPorAutor extends javax.swing.JFrame {
     private void MostrarInvestigacionDelAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarInvestigacionDelAutorActionPerformed
         // TODO add your handling code here:
         ListaDesplegableResumenes.removeAllItems();
-        Autor autor = Global.getTablaAutores().buscar(ListaDesplegableAutores.getSelectedItem().toString());
+        ParametroTabla autor = Global.getTablaAutores().buscar(ListaDesplegableAutores.getSelectedItem().toString());
         Nodo<Articulo> auxArticulo = autor.getArticulos().getHead();
         for (int j = 0; j < autor.getArticulos().getSize(); j++) {
             ListaDesplegableResumenes.addItem(auxArticulo.getData().getTitulo());

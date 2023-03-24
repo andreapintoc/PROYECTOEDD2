@@ -10,31 +10,40 @@ import javax.swing.JOptionPane;
  *
  * @author Liz
  */
-public class HashTableAutor {
+public class HashTableParametroTabla {
     private int size;
-    private Autor[] tabla;
+    private ParametroTabla[] tabla;
+    private double factorCarga;
+    private int numElementos;
 
-    public HashTableAutor(int size) {
+    public HashTableParametroTabla(int size) {
         this.size = size;
-        this.tabla = new Autor[size];
+        this.tabla = new ParametroTabla[size];
         for (int i = 0; i < size; i++) {
             tabla[i] = null;
         }
+        numElementos = 0;
+        factorCarga = 0.0;
     }
     
-    public int hash(String titulo) {
-        int indiceTabla;
+    public int hash(String cadena) {
+        int i = 0,indiceTabla;
         long valorHash;
-        valorHash = this.transformaTitulo(titulo);
+        valorHash = this.transformaCadena(cadena);
         indiceTabla = (int) (valorHash % this.getSize());
+        while (tabla[indiceTabla]!= null && !tabla[indiceTabla].getName().equals(cadena)){
+            i++;
+            indiceTabla = indiceTabla + i*i;
+            indiceTabla = indiceTabla % this.getSize(); // considera el array como circular
+        }
         return indiceTabla;
     }
 
-    long transformaTitulo(String titulo) {
-
-        int valorHash = 0;
-        for (int i = 0; i < Math.min(12, titulo.length()); i++) {
-            valorHash = valorHash + (int) titulo.charAt(i) * i;
+    long transformaCadena(String cadena) {
+        long valorHash;
+        valorHash = 0;
+        for (int i = 0; i < Math.min(12, cadena.length()); i++) {
+            valorHash = valorHash + (int) cadena.charAt(i) * i;
         }
         if (valorHash < 0) {
             valorHash = -valorHash;
@@ -42,8 +51,8 @@ public class HashTableAutor {
         return valorHash;
     }
     
-    public Autor buscar(String clave) {
-        Autor art;
+    public ParametroTabla buscar(String clave) {
+        ParametroTabla art;
         int posicion;
         posicion = this.hash(clave);
         art = getTabla()[posicion];
@@ -60,17 +69,18 @@ public class HashTableAutor {
         }
     }
 
-    public void insertar(Autor autor,Articulo articulo) {
+    public void insertar(ParametroTabla parametroTabla,Articulo articulo) {
         int posicion;
-        if (this.enTabla(autor.getName())) {
-            autor.getArticulos().insertBegin(articulo);
-        } else {
-            autor.getArticulos().insertBegin(articulo);
-            posicion = this.hash(autor.getName());
-            this.getTabla()[posicion] = autor;
+        parametroTabla.getArticulos().insertBegin(articulo);
+        posicion = this.hash(parametroTabla.getName());
+        this.getTabla()[posicion] = parametroTabla;
+        numElementos++;
+        factorCarga = (double)(numElementos)/this.getSize();
+        if (factorCarga > 0.5){
+            JOptionPane.showMessageDialog(null, "Factor de carga supera el 50%.!! Conviene aumentar el tamaño de la tabla.");
         }
     }
-
+    
     public void eliminar(String titulo) {
         int posicion = this.hash(titulo);
         getTabla()[posicion] = null;
@@ -93,14 +103,14 @@ public class HashTableAutor {
     /**
      * @return the tabla
      */
-    public Autor[] getTabla() {
+    public ParametroTabla[] getTabla() {
         return tabla;
     }
 
     /**
      * @param tabla the tabla to set
      */
-    public void setTabla(Autor[] tabla) {
+    public void setTabla(ParametroTabla[] tabla) {
         this.tabla = tabla;
     }
     

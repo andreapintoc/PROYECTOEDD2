@@ -8,11 +8,11 @@ package HashTable;
  *
  * @author Kevin
  */
-public class Autor {
+public class ParametroTabla {
     private String name;
     private ListaSimple articulos;
 
-    public Autor(String name) {
+    public ParametroTabla(String name) {
         this.name = name;
         this.articulos = new ListaSimple();
     }
@@ -44,6 +44,5 @@ public class Autor {
     public void setArticulos(ListaSimple articulos) {
         this.articulos = articulos;
     }
-    
     
 }

@@ -66,16 +66,7 @@ public class HashTable<T> {
         }
     }
     
-    public void insertarL(PalabraClave pc, Articulo articulo) {
-        int posicion;
-        if (this.enTabla(pc.getName())) {
-            pc.getArticulos().insertBegin(articulo);
-        } else {
-            pc.getArticulos().insertBegin(articulo);
-            posicion = this.hash(pc.getName());
-            this.tabla[posicion] = (T) pc;
-        }
-    }
+
 
     public void eliminar(String titulo) {
         int posicion = this.hash(titulo);
