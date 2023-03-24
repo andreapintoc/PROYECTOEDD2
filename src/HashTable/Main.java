@@ -15,16 +15,18 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        HashTable tabla = new HashTable(40);
-        String titulo = "Hola";
-        String[] autores = {"Liz", "Yo"};
-        String resumen = "Hola";
-        String[] palabrasClave = {"Ciencia", "Musica"};
-        Articulo art = new Articulo(titulo, autores, resumen, palabrasClave);
-        tabla.insertar(art);
-        Articulo arti = tabla.buscar(titulo);
-        System.out.println(arti.getAutores()[0]);
+        Interfaz_1 ventana = new Interfaz_1();
+        ventana.setVisible(true);
+        
+//        HashTable tabla = new HashTable(40);
+//        String titulo = "Hola";
+//        String[] autores = {"Liz", "Yo"};
+//        String resumen = "Hola";
+//        String[] palabrasClave = {"Ciencia", "Musica"};
+//        Articulo art = new Articulo(titulo, autores, resumen, palabrasClave);
+//        tabla.insertar(art);
+//        Articulo arti = tabla.buscar(titulo);
+//        System.out.println(arti.getAutores()[0]);
     }
     
 }
