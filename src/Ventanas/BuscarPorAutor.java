@@ -15,12 +15,12 @@ import HashTable.ParametroTabla;
  *
  * @author Kevin
  */
-public class BuscarInvestigacionesPorAutor extends javax.swing.JFrame {
+public class BuscarPorAutor extends javax.swing.JFrame {
    
     /**
      * Creates new form BuscarInvestigacionesPorAutor
      */
-    public BuscarInvestigacionesPorAutor() {
+    public BuscarPorAutor() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
@@ -50,23 +50,22 @@ public class BuscarInvestigacionesPorAutor extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         ListaDesplegableAutores = new javax.swing.JComboBox<>();
         ListaDesplegableResumenes = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
         MostrarInvestigacion = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TextArea1 = new javax.swing.JTextArea();
         MostrarInvestigacionDelAutor = new javax.swing.JButton();
         RegresarMenu = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(0, 102, 102));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setText("Selecciona un Autor");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, -1, 20));
 
         ListaDesplegableAutores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         ListaDesplegableAutores.addActionListener(new java.awt.event.ActionListener() {
@@ -74,21 +73,25 @@ public class BuscarInvestigacionesPorAutor extends javax.swing.JFrame {
                 ListaDesplegableAutoresActionPerformed(evt);
             }
         });
-        jPanel1.add(ListaDesplegableAutores, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 240, 30));
+        jPanel1.add(ListaDesplegableAutores, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 240, 30));
 
         ListaDesplegableResumenes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(ListaDesplegableResumenes, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 240, 30));
+        ListaDesplegableResumenes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ListaDesplegableResumenesActionPerformed(evt);
+            }
+        });
+        jPanel1.add(ListaDesplegableResumenes, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, 240, 30));
 
-        jLabel2.setText("Selecciona una Investigacion");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, -1, -1));
-
+        MostrarInvestigacion.setBackground(new java.awt.Color(0, 19, 19));
+        MostrarInvestigacion.setForeground(new java.awt.Color(255, 255, 255));
         MostrarInvestigacion.setText("Mostrar Investigacion");
         MostrarInvestigacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MostrarInvestigacionActionPerformed(evt);
             }
         });
-        jPanel1.add(MostrarInvestigacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 190, 30));
+        jPanel1.add(MostrarInvestigacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, 220, 30));
 
         TextArea1.setColumns(20);
         TextArea1.setRows(5);
@@ -96,21 +99,43 @@ public class BuscarInvestigacionesPorAutor extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 580, 260));
 
+        MostrarInvestigacionDelAutor.setBackground(new java.awt.Color(0, 19, 19));
+        MostrarInvestigacionDelAutor.setForeground(new java.awt.Color(255, 255, 255));
         MostrarInvestigacionDelAutor.setText("Mostrar Investigaciones del Autor");
         MostrarInvestigacionDelAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MostrarInvestigacionDelAutorActionPerformed(evt);
             }
         });
-        jPanel1.add(MostrarInvestigacionDelAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 240, -1));
+        jPanel1.add(MostrarInvestigacionDelAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, 220, 30));
 
+        RegresarMenu.setBackground(new java.awt.Color(0, 19, 19));
+        RegresarMenu.setForeground(new java.awt.Color(255, 255, 255));
         RegresarMenu.setText("Regresar al Menu");
         RegresarMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RegresarMenuActionPerformed(evt);
             }
         });
-        jPanel1.add(RegresarMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, 130, -1));
+        jPanel1.add(RegresarMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, 130, -1));
+
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 28)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Buscar por Autor");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 240, 40));
+
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("2. Selecciona una investigación:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 180, 40));
+
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel5.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("1. Selecciona un Autor:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 180, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 480));
 
@@ -141,7 +166,13 @@ public class BuscarInvestigacionesPorAutor extends javax.swing.JFrame {
 
     private void RegresarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegresarMenuActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
+        Menu menu = new Menu();
     }//GEN-LAST:event_RegresarMenuActionPerformed
+
+    private void ListaDesplegableResumenesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListaDesplegableResumenesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ListaDesplegableResumenesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,20 +191,21 @@ public class BuscarInvestigacionesPorAutor extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BuscarInvestigacionesPorAutor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BuscarPorAutor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(BuscarInvestigacionesPorAutor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BuscarPorAutor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(BuscarInvestigacionesPorAutor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BuscarPorAutor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BuscarInvestigacionesPorAutor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BuscarPorAutor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BuscarInvestigacionesPorAutor().setVisible(true);
+                new BuscarPorAutor().setVisible(true);
             }
         });
     }
@@ -185,8 +217,9 @@ public class BuscarInvestigacionesPorAutor extends javax.swing.JFrame {
     private javax.swing.JButton MostrarInvestigacionDelAutor;
     private javax.swing.JButton RegresarMenu;
     private javax.swing.JTextArea TextArea1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

@@ -17,12 +17,12 @@ import javax.swing.JOptionPane;
  *
  * @author Liz
  */
-public class BuscarPalabraClave extends javax.swing.JFrame {
+public class AnalizarResumen extends javax.swing.JFrame {
 
     /**
      * Creates new form BuscarPalabraClave
      */
-    public BuscarPalabraClave() {
+    public AnalizarResumen() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
@@ -44,13 +44,11 @@ public class BuscarPalabraClave extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        palabra = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         mostrarDetalles = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         titulos = new javax.swing.JList<>();
-        buscadorPalabra = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         detalles = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
@@ -69,25 +67,17 @@ public class BuscarPalabraClave extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(640, 450));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        palabra.setName(""); // NOI18N
-        palabra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                palabraActionPerformed(evt);
-            }
-        });
-        jPanel1.add(palabra, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 160, -1));
-
         jLabel1.setBackground(new java.awt.Color(255, 204, 102));
         jLabel1.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Escriba una palabra clave:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 180, 40));
+        jLabel1.setText("Seleccione una investigacion:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 180, 40));
 
         jLabel2.setBackground(new java.awt.Color(255, 204, 102));
         jLabel2.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Detalles");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 140, 70, 40));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 90, 70, 40));
 
         mostrarDetalles.setBackground(new java.awt.Color(0, 26, 26));
         mostrarDetalles.setForeground(new java.awt.Color(255, 255, 255));
@@ -97,7 +87,7 @@ public class BuscarPalabraClave extends javax.swing.JFrame {
                 mostrarDetallesActionPerformed(evt);
             }
         });
-        jPanel1.add(mostrarDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 420, 110, -1));
+        jPanel1.add(mostrarDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, 110, -1));
 
         titulos.setBackground(new java.awt.Color(0, 34, 34));
         titulos.setForeground(new java.awt.Color(255, 255, 255));
@@ -108,29 +98,19 @@ public class BuscarPalabraClave extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(titulos);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 250, 220));
-
-        buscadorPalabra.setBackground(new java.awt.Color(0, 26, 26));
-        buscadorPalabra.setForeground(new java.awt.Color(255, 255, 255));
-        buscadorPalabra.setText("Enviar");
-        buscadorPalabra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscadorPalabraActionPerformed(evt);
-            }
-        });
-        jPanel1.add(buscadorPalabra, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 80, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 290, 280));
 
         detalles.setColumns(20);
         detalles.setRows(5);
         jScrollPane2.setViewportView(detalles);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, 280, 220));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, 280, 280));
 
         jLabel3.setBackground(new java.awt.Color(255, 204, 102));
-        jLabel3.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 28)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Buscar por Palabra Clave");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 280, 40));
+        jLabel3.setText("Analizar Resumen");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 280, 40));
 
         RegresarMenu.setBackground(new java.awt.Color(0, 19, 19));
         RegresarMenu.setForeground(new java.awt.Color(255, 255, 255));
@@ -156,10 +136,6 @@ public class BuscarPalabraClave extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void palabraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_palabraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_palabraActionPerformed
-
     private void mostrarDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarDetallesActionPerformed
         // TODO add your handling code here:
         String nombre = titulos.getSelectedValue();
@@ -169,28 +145,6 @@ public class BuscarPalabraClave extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_mostrarDetallesActionPerformed
-
-    private void buscadorPalabraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscadorPalabraActionPerformed
-        // TODO add your handling code here:
-        DefaultListModel modelo = new DefaultListModel();
-        String palabraC = palabra.getText();
-        if (!"".equals(palabraC)) {
-            ParametroTabla PC = Global.getTablaPalabrasClave().buscar(palabraC);
-            if (PC != null) {
-                Nodo<Articulo> Npc = PC.getArticulos().getHead();
-                for (int j = 0; j < PC.getArticulos().getSize(); j++) {
-                modelo.addElement(Npc.getData().getTitulo());
-                Npc = Npc.getNext();
-                }
-                titulos.setModel(modelo);
-            }else {
-                titulos.setModel(modelo);
-            }    
-        } else {
-            JOptionPane.showMessageDialog(null, "Escribe una palabra");
-        }
-        
-    }//GEN-LAST:event_buscadorPalabraActionPerformed
 
     private void RegresarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegresarMenuActionPerformed
         // TODO add your handling code here:
@@ -215,27 +169,27 @@ public class BuscarPalabraClave extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BuscarPalabraClave.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AnalizarResumen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(BuscarPalabraClave.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AnalizarResumen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(BuscarPalabraClave.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AnalizarResumen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BuscarPalabraClave.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AnalizarResumen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BuscarPalabraClave().setVisible(true);
+                new AnalizarResumen().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton RegresarMenu;
-    private javax.swing.JButton buscadorPalabra;
     private javax.swing.JTextArea detalles;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
@@ -246,7 +200,6 @@ public class BuscarPalabraClave extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton mostrarDetalles;
-    private javax.swing.JTextField palabra;
     private javax.swing.JList<String> titulos;
     // End of variables declaration//GEN-END:variables
 }
