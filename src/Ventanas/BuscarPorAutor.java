@@ -10,6 +10,7 @@ import HashTable.HashTable;
 import HashTable.HashTableParametroTabla;
 import HashTable.ListaSimple;
 import HashTable.ParametroTabla;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -26,9 +27,27 @@ public class BuscarPorAutor extends javax.swing.JFrame {
         this.setVisible(true);
         ListaDesplegableAutores.removeAllItems();
         ListaDesplegableResumenes.removeAllItems();
+        HashTableParametroTabla tablaAutores = new HashTableParametroTabla(40);
+        HashTable tablaArticulos = new HashTable(40);
+        
+
+        String[] autores = {"Raquel Sandoval" ,"Iván Loscher", "Christian Guillén-Drija"};
+        String[] palabras = {"fundaciones directas", "AutoCAD", "complemento, C#"};
+        Articulo articulo1 = new Articulo("Complemento de software para el diseño de fundaciones.",autores,"El adelanto tecnológico presente hoy en día ha traído una gran cantidad de herramientas útiles para los ingenieros\n, incorporando el uso de sistemas de información para la toma de decisiones en los procesos de cálculo\n y la visualización de materiales creados a través de los cálculos; así como avanza las tecnologías\n a usar, también deben actualizarse las herramientas para asegurar su durabilidad y fiabilidad\n en el tiempo. El siguiente trabajo presenta una herramienta que, con ayuda de métodos de cálculo\n existentes para fundaciones directas e indirectas, genera el diseño de las mismas en conjunto\n a través de valores ingresados por el usuario, estableciendo así un medio en el que pueda visualizarse\n de manera eficiente y sencilla los resultados del cálculo previamente establecido,\n pues automatiza el proceso de dibujo y cálculo en AutoCAD. Dicha herramienta se implementó\n como un complemento o extensión de software que permite el diseño y dibujo de las fundaciones con base en las librerías, funciones y modelos de AutoCAD. La extensión obtenida puede ser modificada en el tiempo para extender sus funcionalidades. La misma implementa diversos métodos para diseño de fundaciones, entre los que se cuenta Caquot-Kerisel y Meyerhof, aplicado en las fundaciones indirectas. En el caso de las fundaciones directas, implementa el método de Terzaghi y Vesic. Igualmente, se realizó un modelo de cálculo para el diseño de todas las fundaciones de la estructura, el cual fue implementado en el complemento obtenido en este trabajo de investigación.",palabras);
+
+        ParametroTabla autor1 = new ParametroTabla("Raquel Sandoval");
+        ParametroTabla autor2 = new ParametroTabla("Iván Loscher");
+        ParametroTabla autor3 = new ParametroTabla("Christian Guillén-Drija");
+        tablaAutores.insertar(autor1, articulo1);
+        tablaAutores.insertar(autor2, articulo1);
+        tablaAutores.insertar(autor3, articulo1);
+        Articulo articulo2 = new Articulo("PROCkdkdkd",autores,"JJJDJFFJFJ",palabras);
+        tablaArticulos.insertar(articulo2);
+        tablaArticulos.insertar(articulo1);
+        tablaAutores.insertar(autor1, articulo2);
+        Global.setTablaAutores(tablaAutores);
+        Global.setTablaArticulos(tablaArticulos);
         this.CargarListasDesplegables();
-        
-        
         
     }
     
@@ -148,19 +167,27 @@ public class BuscarPorAutor extends javax.swing.JFrame {
 
     private void MostrarInvestigacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarInvestigacionActionPerformed
         // TODO add your handling code here:
-        String tituloArticulo = ListaDesplegableResumenes.getSelectedItem().toString();
-        Articulo articulo = Global.getTablaArticulos().buscar(tituloArticulo);
-        TextArea1.setText(articulo.MostrarResumen());
+        if(ListaDesplegableResumenes.getSelectedItem() != null){
+            String tituloArticulo = ListaDesplegableResumenes.getSelectedItem().toString();
+            Articulo articulo = Global.getTablaArticulos().buscar(tituloArticulo);
+            TextArea1.setText(articulo.MostrarResumen());
+        }else{
+            JOptionPane.showMessageDialog(null, "Debes seleccionar un Autor y luega presionar el boton 'Mostrar investigaciones del autor' para poder escoger una y asi poder verla");
+        }
     }//GEN-LAST:event_MostrarInvestigacionActionPerformed
 
     private void MostrarInvestigacionDelAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarInvestigacionDelAutorActionPerformed
         // TODO add your handling code here:
-        ListaDesplegableResumenes.removeAllItems();
-        ParametroTabla autor = Global.getTablaAutores().buscar(ListaDesplegableAutores.getSelectedItem().toString());
-        Nodo<Articulo> auxArticulo = autor.getArticulos().getHead();
-        for (int j = 0; j < autor.getArticulos().getSize(); j++) {
-            ListaDesplegableResumenes.addItem(auxArticulo.getData().getTitulo());
-            auxArticulo = auxArticulo.getNext();
+        if(ListaDesplegableAutores.getSelectedItem() != null){
+            ListaDesplegableResumenes.removeAllItems();
+            ParametroTabla autor = Global.getTablaAutores().buscar(ListaDesplegableAutores.getSelectedItem().toString());
+            Nodo<Articulo> auxArticulo = autor.getArticulos().getHead();
+            for (int j = 0; j < autor.getArticulos().getSize(); j++) {
+                ListaDesplegableResumenes.addItem(auxArticulo.getData().getTitulo());
+                auxArticulo = auxArticulo.getNext();
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Debes seleccionar un Autor");
         }
     }//GEN-LAST:event_MostrarInvestigacionDelAutorActionPerformed
 
