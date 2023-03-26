@@ -70,14 +70,18 @@ public class HashTableParametroTabla {
     }
 
     public void insertar(ParametroTabla parametroTabla,Articulo articulo) {
-        int posicion;
-        parametroTabla.getArticulos().insertBegin(articulo);
-        posicion = this.hash(parametroTabla.getName());
-        this.getTabla()[posicion] = parametroTabla;
-        numElementos++;
-        factorCarga = (double)(numElementos)/this.getSize();
-        if (factorCarga > 0.5){
-            JOptionPane.showMessageDialog(null, "Factor de carga supera el 50%.!! Conviene aumentar el tamaño de la tabla.");
+        if(this.numElementos == this.getSize()){
+            JOptionPane.showMessageDialog(null, "La palabra clave o el autor no pudo ser agregado en su respectiva tabla\nLa tabla alcanzo el numero limite de elementos.Por favor, comunicate con los encargados para aumentar su limite");
+        }else{
+            int posicion;
+            parametroTabla.getArticulos().insertBegin(articulo);
+            posicion = this.hash(parametroTabla.getName());
+            this.getTabla()[posicion] = parametroTabla;
+            numElementos++;
+            factorCarga = (double)(numElementos)/this.getSize();
+            if (factorCarga > 0.5){
+                JOptionPane.showMessageDialog(null, "Factor de carga supera el 50%.!! Conviene aumentar el tamaño de la tabla.");
+            }
         }
     }
     

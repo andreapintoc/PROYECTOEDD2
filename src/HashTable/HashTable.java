@@ -66,16 +66,20 @@ public class HashTable {
     }
 
     public void insertar(Articulo objeto) {
-        int posicion;
-        if (this.enTabla(objeto.getTitulo())) {
-            JOptionPane.showMessageDialog(null, "El objeto a insertar ya existe");
-        } else {
-            posicion = this.hash(objeto.getTitulo());
-            this.tabla[posicion] = objeto;
-            numElementos++;
-            factorCarga = (double)(numElementos)/this.getSize();
-            if (factorCarga > 0.5){
-                JOptionPane.showMessageDialog(null, "Factor de carga supera el 50%.!! Conviene aumentar el tamaño de la tabla.");
+        if(this.numElementos == this.getSize()){
+            JOptionPane.showMessageDialog(null, "El articulo no pudo ser agregado\nLa tabla alcanzo el numero limite de elementos.Por favor, comunicate con los encargados para aumentar su limite");
+        }else{
+            int posicion;
+            if (this.enTabla(objeto.getTitulo())) {
+                JOptionPane.showMessageDialog(null, "El objeto a insertar ya existe");
+            } else {
+                posicion = this.hash(objeto.getTitulo());
+                this.tabla[posicion] = objeto;
+                numElementos++;
+                factorCarga = (double)(numElementos)/this.getSize();
+                if (factorCarga > 0.5){
+                    JOptionPane.showMessageDialog(null, "Factor de carga supera el 50%.!! Conviene aumentar el tamaño de la tabla.");
+                }
             }
         }
     }
