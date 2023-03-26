@@ -17,21 +17,21 @@ import HashTable.ParametroTabla;
  * @author Kevin
  */
 public class Global {
-    private static HashTable<Articulo> tablaArticulos;
+    private static HashTable tablaArticulos;
     private static HashTableParametroTabla tablaAutores;
     private static HashTableParametroTabla tablaPalabrasClave;
 
     /**
      * @return the tablaArticulos
      */
-    public static HashTable<Articulo> getTablaArticulos() {
+    public static HashTable getTablaArticulos() {
         return tablaArticulos;
     }
 
     /**
      * @param aTablaArticulos the tablaArticulos to set
      */
-    public static void setTablaArticulos(HashTable<Articulo> aTablaArticulos) {
+    public static void setTablaArticulos(HashTable aTablaArticulos) {
         tablaArticulos = aTablaArticulos;
     }
 

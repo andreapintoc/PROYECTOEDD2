@@ -10,23 +10,32 @@ import javax.swing.JOptionPane;
  *
  * @author Liz
  */
-public class HashTable<T> {
+public class HashTable {
     private int size;
-    private T[] tabla;
+    private Articulo[] tabla;
+    private double factorCarga;
+    private int numElementos;
 
     public HashTable(int size) {
         this.size = size;
-        this.tabla = (T[]) new Object[size];
+        this.tabla = (Articulo[]) new Articulo[size];
         for (int i = 0; i < size; i++) {
             tabla[i] = null;
         }
+        numElementos = 0;
+        factorCarga = 0.0;
     }
     
     public int hash(String titulo) {
-        int indiceTabla;
+        int i = 0, indiceTabla;
         long valorHash;
         valorHash = this.transformaTitulo(titulo);
         indiceTabla = (int) (valorHash % this.getSize());
+        while (tabla[indiceTabla]!= null && !tabla[indiceTabla].getTitulo().equals(titulo)){
+            i++;
+            indiceTabla = indiceTabla + i*i;
+            indiceTabla = indiceTabla % this.getSize(); // considera el array como circular
+        }
         return indiceTabla;
     }
 
@@ -42,8 +51,8 @@ public class HashTable<T> {
         return valorHash;
     }
     
-    public T buscar(String clave) {
-        T obj;
+    public Articulo buscar(String clave) {
+        Articulo obj;
         int posicion;
         posicion = this.hash(clave);
         obj = getTabla()[posicion];
@@ -56,17 +65,21 @@ public class HashTable<T> {
         return this.tabla[posicion] != null;
     }
 
-    public void insertar(T objeto, String name) {
+    public void insertar(Articulo objeto) {
         int posicion;
-        if (this.enTabla(name)) {
+        if (this.enTabla(objeto.getTitulo())) {
             JOptionPane.showMessageDialog(null, "El objeto a insertar ya existe");
         } else {
-            posicion = this.hash(name);
+            posicion = this.hash(objeto.getTitulo());
             this.tabla[posicion] = objeto;
+            numElementos++;
+            factorCarga = (double)(numElementos)/this.getSize();
+            if (factorCarga > 0.5){
+                JOptionPane.showMessageDialog(null, "Factor de carga supera el 50%.!! Conviene aumentar el tamaño de la tabla.");
+            }
         }
     }
     
-
 
     public void eliminar(String titulo) {
         int posicion = this.hash(titulo);
@@ -90,14 +103,14 @@ public class HashTable<T> {
     /**
      * @return the tabla
      */
-    public T[] getTabla() {
+    public Articulo[] getTabla() {
         return tabla;
     }
 
     /**
      * @param tabla the tabla to set
      */
-    public void setTabla(T[] tabla) {
+    public void setTabla(Articulo[] tabla) {
         this.tabla = tabla;
     }
     
