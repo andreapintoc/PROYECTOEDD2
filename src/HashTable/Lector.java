@@ -64,7 +64,13 @@ public class Lector {
     public void cargar(String txt) {
         String[] split1 = txt.split("Autores");
         String titulo = split1[0].trim();
-        
+        String[] split2 = split1[1].split("Resumen");
+
+        String[] autores = split2[0].replaceAll("(?m)^\\s*\\n", "").split("\n");
+        for (int i = 0; i < autores.length; i++) {
+            System.out.println(autores[i]);
+            
+        }
 
     }
 

@@ -44,6 +44,24 @@ public class ListaSimple<T> {
         return node;
     }
     
+    public void insertOrdered(T data) {
+    Nodo node = new Nodo(data);
+    if (isEmpty()) {
+        setHead(node);
+    } else if (String.valueOf(data).compareToIgnoreCase(String.valueOf(getHead().getData())) <= 0) {
+        node.setNext(getHead());
+        setHead(node);
+    } else {
+        Nodo current = getHead();
+        while (current.getNext() != null && String.valueOf(data).compareToIgnoreCase(String.valueOf(current.getNext().getData())) > 0) {
+            current = current.getNext();
+        }
+        node.setNext(current.getNext());
+        current.setNext(node);
+    }
+    size++;
+}
+
     
     
     public Nodo deleteBegin(){
