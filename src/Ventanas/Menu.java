@@ -4,10 +4,19 @@
  */
 package Ventanas;
 
+
 import HashTable.Articulo;
 import HashTable.HashTable;
-import HashTable.HashTableParametroTabla;
-import HashTable.Nodo;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileSystemView;
 
 
 /**
@@ -15,7 +24,14 @@ import HashTable.Nodo;
  * @author Liz
  */
 public class Menu extends javax.swing.JFrame {
-
+    int retornaValor = 1;
+    String archivo_txt;
+    String [] autors;
+    String Titulo = "";
+    String Resumen;
+    String[] palabrita;
+    Articulo art1 = new Articulo(Titulo, autors, Resumen, palabrita);
+    HashTable tabla = new HashTable(2);
     /**
      * Creates new form BuscarPalabraClave
      */
@@ -139,7 +155,60 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_SalirActionPerformed
 
     private void AgregarResumenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarResumenActionPerformed
-        // TODO add your handling code here:
+        
+        String SEPARADOR_CAMPO = ",";
+        JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+	retornaValor = jfc.showOpenDialog(null);
+        File carpeta;
+        carpeta = jfc.getSelectedFile();
+        if (!carpeta.exists()){
+            JOptionPane.showMessageDialog(null, "NO EXISTE.");
+        try {
+            carpeta.createNewFile();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }else{
+            FileReader fr = null;
+        try {
+            fr = new FileReader (carpeta);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            BufferedReader br = new BufferedReader (fr);
+        try {
+            archivo_txt = br.readLine();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            JOptionPane.showMessageDialog(null, "ARCHIVO LEIDO.");
+            try {       
+                int count = 2;
+                Titulo += archivo_txt;
+                while ((archivo_txt = br.readLine()) != null) {
+                    if ((archivo_txt.contains("Palabras claves:"))){
+                       String palabrita [] = archivo_txt.split(SEPARADOR_CAMPO);
+                    }
+                    if ((count > 0)){
+                        String Autor = archivo_txt;
+                        String [] autors = {Autor};
+                        count --; 
+                    }
+                    else if ((archivo_txt.contains("Autores"))){
+                        count ++; 
+                    }
+                }    
+            System.out.println("Tutulo: " + Titulo);
+            for(int i=0; i<palabrita.length; i++){
+                System.out.println("Palabras claves: " + palabrita[i]);
+            for(int r=0; i<autors.length; r++){
+                System.out.println("Autores: " + autors[r]);
+            tabla.insertar(art1);
+            }
+            } }catch (IOException ex) {
+                Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }        
     }//GEN-LAST:event_AgregarResumenActionPerformed
 
     private void BusquedaAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BusquedaAutorActionPerformed
