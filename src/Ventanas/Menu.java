@@ -189,7 +189,7 @@ public class Menu extends javax.swing.JFrame {
                     if ((archivo_txt.contains("Palabras claves:"))){
                        String palabrita [] = archivo_txt.split(SEPARADOR_CAMPO);
                     }
-                    if ((count > 0)){
+                    if (((count > 0) && (!archivo_txt.contains("Autores")))){
                         String Autor = archivo_txt;
                         String [] autors = {Autor};
                         count --; 
