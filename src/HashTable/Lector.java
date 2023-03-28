@@ -17,7 +17,6 @@ import javax.swing.JOptionPane;
 public class Lector {
     
     public String readTxt(String path) {
-
         String line;
         String txt = "";
         File file = new File(path);
@@ -28,7 +27,7 @@ public class Lector {
                 FileReader fr = new FileReader(file);
                 BufferedReader br = new BufferedReader(fr);
                 while ((line = br.readLine()) != null) {
-                    if (!line.isEmpty()) {
+                    if (!line.trim().isEmpty()) {
                         txt += line + "\n";
                     }
                 }
@@ -37,7 +36,6 @@ public class Lector {
         } catch (Exception err) {
             return txt;
         }
-
     }
         
     public String openTxt() {
@@ -51,7 +49,9 @@ public class Lector {
                 FileReader fr = new FileReader(abrir);
                 BufferedReader br = new BufferedReader(fr);
                 while ((aux = br.readLine()) != null) {
-                    txt += aux + "\n";
+                    if (!aux.trim().isEmpty()) {
+                        txt += aux + "\n";
+                    }
                 }
                 br.close();
             }
@@ -60,6 +60,14 @@ public class Lector {
         }
         return txt;
     }
+    
+    public void cargar(String txt) {
+        String[] split1 = txt.split("Autores");
+        String titulo = split1[0].trim();
+        
+
+    }
+
     
     //
 }
