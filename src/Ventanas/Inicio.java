@@ -93,6 +93,8 @@ public class Inicio extends javax.swing.JFrame {
 
     private void ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarActionPerformed
         // TODO add your handling code here:
+        Lector l = new Lector();
+        l.loadFiles(l.readTxt("test\\todo.txt"));
         this.setVisible(false);
         Menu menu = new Menu();
     }//GEN-LAST:event_ingresarActionPerformed

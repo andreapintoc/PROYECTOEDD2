@@ -17,9 +17,10 @@ import HashTable.ParametroTabla;
  * @author Kevin
  */
 public class Global {
-    private static HashTable tablaArticulos;
-    private static HashTableParametroTabla tablaAutores;
-    private static HashTableParametroTabla tablaPalabrasClave;
+    private static HashTable tablaArticulos = new HashTable(80);
+    private static HashTableParametroTabla tablaAutores = new HashTableParametroTabla(150);
+    private static HashTableParametroTabla tablaPalabrasClave = new HashTableParametroTabla(150);
+    private static ListaSimple<String> listaTitulos = new ListaSimple();
 
     /**
      * @return the tablaArticulos
@@ -62,5 +63,22 @@ public class Global {
     public static void setTablaPalabrasClave(HashTableParametroTabla aTablaPalabrasClave) {
         tablaPalabrasClave = aTablaPalabrasClave;
     }
+
+    /**
+     * @return the listaTitulos
+     */
+    public static ListaSimple<String> getListaTitulos() {
+        return listaTitulos;
+    }
+
+    /**
+     * @param aListaTitulos the listaTitulos to set
+     */
+    public static void setListaTitulos(ListaSimple<String> aListaTitulos) {
+        listaTitulos = aListaTitulos;
+    }
+
+    
+    
 
 }

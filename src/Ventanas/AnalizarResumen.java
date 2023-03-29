@@ -26,7 +26,15 @@ public class AnalizarResumen extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+        
         DefaultListModel modelo = new DefaultListModel();
+
+        
+        Nodo<String> title = Global.getListaTitulos().getHead();
+        for (int i = 0; i < Global.getListaTitulos().getSize(); i++) {
+            modelo.addElement(title.getData());
+            title = title.getNext();
+                }
         titulos.setModel(modelo);
         
     }
