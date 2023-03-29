@@ -106,8 +106,7 @@ public class Articulo {
      * @return el contador de las palabras claves del articulo
      */
     public int contarPalabrasClave(String palabra) {
-        String r = this.Resumen.replaceAll("[\\.\\,\\(\\)]", "");
-        r = r.toLowerCase();
+        String r = this.Resumen.toLowerCase();
         String[] resumen = r.split(palabra.toLowerCase());
         int contador = resumen.length;
         return contador -1;
