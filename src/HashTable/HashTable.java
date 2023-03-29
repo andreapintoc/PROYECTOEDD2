@@ -13,20 +13,29 @@ import javax.swing.JOptionPane;
 public class HashTable {
     private int size;
     private Articulo[] tabla;
+    private double factorCarga;
+    private int numElementos;
 
     public HashTable(int size) {
         this.size = size;
-        this.tabla = new Articulo[size];
+        this.tabla = (Articulo[]) new Articulo[size];
         for (int i = 0; i < size; i++) {
             tabla[i] = null;
         }
+        numElementos = 0;
+        factorCarga = 0.0;
     }
     
     public int hash(String titulo) {
-        int indiceTabla;
+        int i = 0, indiceTabla;
         long valorHash;
         valorHash = this.transformaTitulo(titulo);
         indiceTabla = (int) (valorHash % this.getSize());
+        while (tabla[indiceTabla]!= null && !tabla[indiceTabla].getTitulo().equals(titulo)){
+            i++;
+            indiceTabla = indiceTabla + i*i;
+            indiceTabla = indiceTabla % this.getSize(); // considera el array como circular
+        }
         return indiceTabla;
     }
 
@@ -43,32 +52,38 @@ public class HashTable {
     }
     
     public Articulo buscar(String clave) {
-        Articulo art;
+        Articulo obj;
         int posicion;
         posicion = this.hash(clave);
-        art = getTabla()[posicion];
-        return art;
+        obj = getTabla()[posicion];
+        return obj;
     }
 
     public boolean enTabla(String clave) {
         int posicion;
         posicion = this.hash(clave);
-        if (getTabla()[posicion] != null) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.tabla[posicion] != null;
     }
 
-    public void insertar(Articulo articulo) {
-        int posicion;
-        if (this.enTabla(articulo.getTitulo())) {
-            JOptionPane.showMessageDialog(null, "El Articulo a insertar ya existe");
-        } else {
-            posicion = this.hash(articulo.getTitulo());
-            this.getTabla()[posicion] = articulo;
+    public void insertar(Articulo objeto) {
+        if(this.numElementos == this.getSize()){
+            JOptionPane.showMessageDialog(null, "El articulo no pudo ser agregado\nLa tabla alcanzo el numero limite de elementos.Por favor, comunicate con los encargados para aumentar su limite");
+        }else{
+            int posicion;
+            if (this.enTabla(objeto.getTitulo())) {
+                JOptionPane.showMessageDialog(null, "El objeto a insertar ya existe");
+            } else {
+                posicion = this.hash(objeto.getTitulo());
+                this.tabla[posicion] = objeto;
+                numElementos++;
+                factorCarga = (double)(numElementos)/this.getSize();
+                if (factorCarga > 0.5){
+                    JOptionPane.showMessageDialog(null, "Factor de carga supera el 50%.!! Conviene aumentar el tamaño de la tabla.");
+                }
+            }
         }
     }
+    
 
     public void eliminar(String titulo) {
         int posicion = this.hash(titulo);
@@ -83,7 +98,7 @@ public class HashTable {
     }
 
     /**
-     * @param size the size to set
+     * @param siz77e the size to set
      */
     public void setSize(int size) {
         this.size = size;
@@ -102,8 +117,4 @@ public class HashTable {
     public void setTabla(Articulo[] tabla) {
         this.tabla = tabla;
     }
-    
-    
-    
-    
 }
