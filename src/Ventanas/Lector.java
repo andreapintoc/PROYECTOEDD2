@@ -120,13 +120,25 @@ public class Lector {
             Global.getListaTitulos().insertOrdered(titulo);
             
             for (int i = 0; i < autores.length; i++) {
-                ParametroTabla autor = new ParametroTabla(autores[i]);
-                Global.getTablaAutores().insertar(autor, art);
+                if (Global.getTablaAutores().buscar(autores[i]) == null) {
+                    ParametroTabla autor = new ParametroTabla(autores[i]);
+                    Global.getTablaAutores().insertar(autor, art);
+                }else{
+                    ParametroTabla autorB = Global.getTablaAutores().buscar(autores[i]);
+                    Global.getTablaAutores().insertar(autorB, art);
+                }
+                
             }
             
             for (int i = 0; i < claves.length; i++) {
-                ParametroTabla palabrasC = new ParametroTabla(claves[i]);
-                Global.getTablaPalabrasClave().insertar(palabrasC, art);
+                
+                if (Global.getTablaPalabrasClave().buscar(claves[i]) == null) {
+                    ParametroTabla palabrasC = new ParametroTabla(claves[i]);
+                    Global.getTablaPalabrasClave().insertar(palabrasC, art);
+                }else{
+                    ParametroTabla palabraClaveB = Global.getTablaAutores().buscar(claves[i]);
+                    Global.getTablaAutores().insertar(palabraClaveB, art);
+                }
             }           
             return true;
         } else {
