@@ -79,6 +79,10 @@ public class Articulo {
         this.PalabrasClave = PalabrasClave;
     }
     
+    
+     /**
+     * muestra los detalles del articulo
+     */
     public String MostrarResumen(){
         String txt = "                                    "+this.getTitulo()+"                   "+"\n"+"\n"+"\n";
         txt += "Autores"+"\n";
@@ -97,16 +101,19 @@ public class Articulo {
         return txt;
     }
     
+     /**
+     * @return el contador de las palabras claves del articulo
+     */
     public int contarPalabrasClave(String palabra) {
         String r = this.Resumen.replaceAll("[\\.\\,\\(\\)]", "");
-        String[] resumen = r.split(" ");
-         int contador = 0;
-            for (int j = 0; j < resumen.length; j++) {
+        String[] resumen = r.split(palabra);
+         int contador = resumen.length;
+          //  for (int j = 0; j < resumen.length; j++) {
                  
-                if (resumen[j].contains(palabra)) {
-                    contador = contador + 1;
-                }     
-            }
+            //    if (resumen[j].contains(palabra)) {
+              //      contador = contador + 1;
+               // }     
+            //}
         return contador;
     } 
     

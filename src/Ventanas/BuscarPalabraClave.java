@@ -159,7 +159,10 @@ public class BuscarPalabraClave extends javax.swing.JFrame {
     private void palabraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_palabraActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_palabraActionPerformed
-
+    
+    /**
+     *  itera con la tabla para obtener los articulos de la palabra clave dada
+     */
     private void mostrarDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarDetallesActionPerformed
         // TODO add your handling code here:
         String nombre = titulos.getSelectedValue();
@@ -169,7 +172,9 @@ public class BuscarPalabraClave extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_mostrarDetallesActionPerformed
-
+    /**
+     * muestra los detalles del articulo seleccionado
+     */
     private void buscadorPalabraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscadorPalabraActionPerformed
         // TODO add your handling code here:
         DefaultListModel modelo = new DefaultListModel();
@@ -191,7 +196,10 @@ public class BuscarPalabraClave extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_buscadorPalabraActionPerformed
-
+    
+    /**
+     * cambio ventana 
+     */
     private void RegresarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegresarMenuActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);

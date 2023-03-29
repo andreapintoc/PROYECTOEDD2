@@ -136,7 +136,9 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_SalirActionPerformed
 
     private void AgregarResumenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarResumenActionPerformed
-      
+     /**
+     * llama a lector para cargar un articulo  
+     */
         Lector l = new Lector();
         String txt = l.openTxt(); 
         l.loadFiles(txt);
@@ -144,6 +146,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void BusquedaAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BusquedaAutorActionPerformed
         // TODO add your handling code here:
+        
         this.setVisible(false);
         BuscarPorAutor v1 = new BuscarPorAutor();
     }//GEN-LAST:event_BusquedaAutorActionPerformed

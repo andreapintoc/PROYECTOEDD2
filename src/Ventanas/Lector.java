@@ -20,6 +20,9 @@ import javax.swing.JOptionPane;
  */
 public class Lector {
     
+    /**
+     *  lee el txt de un path dato 
+     */
     public String readTxt(String path) {
         String line;
         String txt = "";
@@ -41,7 +44,10 @@ public class Lector {
             return txt;
         }
     }
-        
+    
+    /**
+     *  abre un txt subido por el usuario con un JFileChooser
+     */
     public String openTxt() {
         String aux = "";
         String txt = "";
@@ -65,6 +71,9 @@ public class Lector {
         return txt;
     }
     
+     /**
+     *  guarda los cambios
+     */
         public void writeTxt(String txt) {
         // escribe en "todo" el contenido del archivo cargado por el usuario
         String texto = this.readTxt("test\\todo.txt");
@@ -80,6 +89,9 @@ public class Lector {
         }
     }
     
+     /**
+     * verifica si el txt que se va a cargar es uno ya guardado o uno nuevo para escribir en el txt
+     */
         public void loadFiles(String txt) {
 
         String[] t = null;
@@ -100,6 +112,9 @@ public class Lector {
         }
     }
     
+    /**
+     *  hace los splits  del txt y carga los datos a la tabla
+     */
     public boolean cargar(String txt) {
         txt = txt.replace("Palabras Claves: ", "Palabras claves: ");
         String[] split1 = txt.split("Autores");
@@ -109,6 +124,7 @@ public class Lector {
         String[] split2 = split3[0].split("Resumen");
         String [] split5 = split2[0].split("Autores");
         String[] autores = split5[1].trim().split("\\r?\\n");
+        split3[1] =  split3[1].replace(" y ", ", ");
         String[] claves = split3[1].trim().replace(".", "").split(", ");
         String resumen = split2[1].trim();
         

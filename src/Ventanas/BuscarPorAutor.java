@@ -31,6 +31,9 @@ public class BuscarPorAutor extends javax.swing.JFrame {
         
     }
     
+    /**
+     *  muestra los autores cargados en el sistema
+     */
     public void CargarListasDesplegables(){
         for (int i = 0; i < Global.getTablaAutores().getSize(); i++) {
             if(Global.getTablaAutores().getTabla()[i] != null){
@@ -145,6 +148,9 @@ public class BuscarPorAutor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ListaDesplegableAutoresActionPerformed
 
+    /**
+     *  muestra los detalles de la investigacion seleccionada
+     */
     private void MostrarInvestigacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarInvestigacionActionPerformed
         // TODO add your handling code here:
         if(ListaDesplegableResumenes.getSelectedItem() != null){
@@ -155,7 +161,10 @@ public class BuscarPorAutor extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Debes seleccionar un Autor y luega presionar el boton 'Mostrar investigaciones del autor' para poder escoger una y asi poder verla");
         }
     }//GEN-LAST:event_MostrarInvestigacionActionPerformed
-
+    
+    /**
+     *  muestra las investigacioness del autor seleccionado
+     */
     private void MostrarInvestigacionDelAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarInvestigacionDelAutorActionPerformed
         // TODO add your handling code here:
         if(ListaDesplegableAutores.getSelectedItem() != null){
@@ -171,6 +180,9 @@ public class BuscarPorAutor extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_MostrarInvestigacionDelAutorActionPerformed
 
+    /**
+     * cambio ventana 
+     */
     private void RegresarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegresarMenuActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);

@@ -19,8 +19,8 @@ import javax.swing.JOptionPane;
  */
 public class AnalizarResumen extends javax.swing.JFrame {
 
-    /**
-     * Creates new form BuscarPalabraClave
+     /**
+     * inicializa la ventana
      */
     public AnalizarResumen() {
         initComponents();
@@ -144,16 +144,33 @@ public class AnalizarResumen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * muestra los detalles de las palabras claves
+     */
     private void mostrarDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarDetallesActionPerformed
         // TODO add your handling code here:
         String nombre = titulos.getSelectedValue();
         if (nombre != null) {
             Articulo mostrar = Global.getTablaArticulos().buscar(nombre);
-            detalles.setText(mostrar.MostrarResumen()); 
+            String[] palabrasclave = mostrar.getPalabrasClave();
+             String txt = "                                    "+mostrar.getTitulo()+"                   "+"\n"+"\n"+"\n";
+            txt += "Autores"+"\n";
+            for (int i = 0; i < mostrar.getAutores().length; i++) {
+                txt +=mostrar.getAutores()[i]+"\n";
+            }
+            txt += "\nResumen\n"+mostrar.getResumen()+"\n"+"\n";
+            
+            for (int i = 0; i < palabrasclave.length; i++) {
+                txt = txt + palabrasclave[i] + ": " + mostrar.contarPalabrasClave(palabrasclave[i]) + "\n";
+            }
+            
+            detalles.setText(txt); 
         }
         
     }//GEN-LAST:event_mostrarDetallesActionPerformed
-
+     /**
+     * cambia ventana
+     */
     private void RegresarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegresarMenuActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
