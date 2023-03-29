@@ -68,10 +68,8 @@ public class Lector {
 
         String[] autores = split2[0].replaceAll("(?m)^\\s*\\n", "").split("\n");
         for (int i = 0; i < autores.length; i++) {
-            System.out.println(autores[i]);
-            
+            System.out.println(autores[i]);   
         }
-
     }
 
     
