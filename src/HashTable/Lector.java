@@ -66,15 +66,14 @@ public class Lector {
         String[] split3 = txt.split("Palabras Claves: ");
         String titulo = split1[0].trim();
         String[] split2 = split3[0].split("Resumen");
-        String[] split4 = split3[1].split("Palabras Claves: ");
         String [] split5 = split2[0].split("Autores");
         String[] autores = split5[1].replaceAll("(?m)^\\s*\\n", "").split("\n");
-        String[] claves = split4[0].replaceAll("(?m)^\\s*\\n", "").split(", ");
+        String[] claves = split3[1].replaceAll("(?m)^\\s*\\n", "").split(", ");
         String resumen = split2[1].replaceAll("(?m)^\\s*\\n", "");
         Articulo art1 = new Articulo(titulo, autores, resumen, claves);
         HashTable tabla = new HashTable(2);
         tabla.insertar(art1);
-       
+        
     }
 }
 
