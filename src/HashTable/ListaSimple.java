@@ -27,11 +27,12 @@ public class ListaSimple<T> {
         this.size = size;
     }
     
-    public boolean isEmpty(){//para saber si la lista esta vacia 
+    //para saber si la lista esta vacia 
+    public boolean isEmpty(){
         return head == null;
     }
     
-    
+    //para insertar al principio de la lista
     public Nodo insertBegin(Object data){
         Nodo node = new Nodo(data);
         if(isEmpty()){
@@ -63,7 +64,7 @@ public class ListaSimple<T> {
 }
 
     
-    
+    //PARA ELIMINAR AL PRINCIPIO DE LA LISTA.SIN EMBARGO,NO LO USAMOS EN EL PROYECTO.
     public Nodo deleteBegin(){
         if (!isEmpty()){
             Nodo pointer = getHead();
@@ -75,6 +76,7 @@ public class ListaSimple<T> {
         return null;
     }
     
+    //PARA ELIMINAR AL FINAL DE LA LISTA.SIN EMBARGO,NO LO USAMOS EN EL PROYECTO.
     public Nodo deleteFinal(){
         if (!isEmpty()){
             Nodo pointer = getHead();
@@ -94,6 +96,7 @@ public class ListaSimple<T> {
         return null;
     }
     
+    //PARA ELIMINAR EN UN INDICE DE LA LISTA.SIN EMBARGO,NO LO USAMOS EN EL PROYECTO.
     public Nodo deleteInIndex(int index) {
         if (!isEmpty()){
             Nodo pointer = getHead();

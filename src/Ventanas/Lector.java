@@ -101,10 +101,8 @@ public class Lector {
     }
     
     public boolean cargar(String txt) {
-
         txt = txt.replace("Palabras Claves: ", "Palabras claves: ");
         String[] split1 = txt.split("Autores");
-        
         String[] split3 = txt.split("Palabras claves: ");
         String titulo = split1[0].trim();
 
@@ -120,25 +118,24 @@ public class Lector {
             Global.getListaTitulos().insertOrdered(titulo);
             
             for (int i = 0; i < autores.length; i++) {
-                if (Global.getTablaAutores().buscar(autores[i]) == null) {
+                if(Global.getTablaAutores().enTabla(autores[i])){
+                    ParametroTabla autor = Global.getTablaAutores().buscar(autores[i]);
+                    autor.getArticulos().insertBegin(art);
+                }else{
                     ParametroTabla autor = new ParametroTabla(autores[i]);
                     Global.getTablaAutores().insertar(autor, art);
-                }else{
-                    ParametroTabla autorB = Global.getTablaAutores().buscar(autores[i]);
-                    Global.getTablaAutores().insertar(autorB, art);
                 }
-                
             }
             
             for (int i = 0; i < claves.length; i++) {
-                
-                if (Global.getTablaPalabrasClave().buscar(claves[i]) == null) {
+                if(Global.getTablaPalabrasClave().enTabla(claves[i])){
+                    ParametroTabla palabrasC = Global.getTablaPalabrasClave().buscar(claves[i]);
+                    palabrasC.getArticulos().insertBegin(art);
+                }else{
                     ParametroTabla palabrasC = new ParametroTabla(claves[i]);
                     Global.getTablaPalabrasClave().insertar(palabrasC, art);
-                }else{
-                    ParametroTabla palabraClaveB = Global.getTablaAutores().buscar(claves[i]);
-                    Global.getTablaAutores().insertar(palabraClaveB, art);
                 }
+                
             }           
             return true;
         } else {
@@ -149,5 +146,5 @@ public class Lector {
 }
 
     
-    //
+   
 

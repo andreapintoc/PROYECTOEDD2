@@ -80,7 +80,7 @@ public class Articulo {
     }
     
     public String MostrarResumen(){
-        String txt = "                   "+this.getTitulo()+"                   "+"\n"+"\n"+"\n";
+        String txt = "                                    "+this.getTitulo()+"                   "+"\n"+"\n"+"\n";
         txt += "Autores"+"\n";
         for (int i = 0; i < this.Autores.length; i++) {
             txt +=this.Autores[i]+"\n";
