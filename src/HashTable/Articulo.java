@@ -79,15 +79,18 @@ public class Articulo {
         this.PalabrasClave = PalabrasClave;
     }
     
+    //ESTE METODO MUESTRA LOS DETALLES DE UN ARTICULO
+    //NOTA:DADO 2 INDICES EL METODO SUBSTRING TE DEVUELVE LOS CARACTERES QUE HAY ENTRE EL INTERVALO QUE FORMAN EN EL STRING
+    //LO USAMOS PARA QUE EL RESUMEN TENGA SALTOS DE LINEA Y SE VEA MEJOR EN PANTALLA
     public String MostrarResumen(){
         String txt = "                                    "+this.getTitulo()+"                   "+"\n"+"\n"+"\n";
         txt += "Autores"+"\n";
-        for (int i = 0; i < this.Autores.length; i++) {
+        for (int i = 0; i < this.Autores.length; i++) {//RECORRE EL ARRAY DE AUTORES Y ANADE CADA UNO AL STRING
             txt +=this.Autores[i]+"\n";
         }
-        txt += "\nResumen\n"+this.Resumen+"\n"+"\n";
+        txt += "\nResumen\n"+this.Resumen.substring(0,this.Resumen.length()/4)+"\n"+ this.Resumen.substring(this.Resumen.length() / 4, this.Resumen.length()/2)+"\n"+ this.Resumen.substring(this.Resumen.length() / 2, (int)(this.Resumen.length() / 1.33))+"\n"+ this.Resumen.substring((int)(this.Resumen.length() / 1.33),this.Resumen.length())+"\n"+"\n";
         txt += "Palabras Claves: ";
-        for (int i = 0; i < this.PalabrasClave.length; i++) {
+        for (int i = 0; i < this.PalabrasClave.length; i++) {//RECORRE EL ARRAY DE PALABRASCLAVE Y ANADE CADA UNO AL STRING
             if(this.PalabrasClave[i] == this.PalabrasClave[0]){
                 txt += this.PalabrasClave[i];
             }else{
