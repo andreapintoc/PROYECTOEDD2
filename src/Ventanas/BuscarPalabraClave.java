@@ -180,7 +180,7 @@ public class BuscarPalabraClave extends javax.swing.JFrame {
         DefaultListModel modelo = new DefaultListModel();
         String palabraC = palabra.getText();
         if (!"".equals(palabraC)) {
-            ParametroTabla PC = Global.getTablaPalabrasClave().buscar(palabraC);
+            ParametroTabla PC = Global.getTablaPalabrasClave().buscar(palabraC);    
             if (PC != null) {
                 Nodo<Articulo> Npc = PC.getArticulos().getHead();
                 for (int j = 0; j < PC.getArticulos().getSize(); j++) {
@@ -189,7 +189,9 @@ public class BuscarPalabraClave extends javax.swing.JFrame {
                 }
                 titulos.setModel(modelo);
             }else {
+                JOptionPane.showMessageDialog(null, "La palabra que escribiste no pertenece a ningun resumen");
                 titulos.setModel(modelo);
+                
             }    
         } else {
             JOptionPane.showMessageDialog(null, "Escribe una palabra");
