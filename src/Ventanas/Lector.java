@@ -4,9 +4,9 @@
  */
 package Ventanas;
 
-import HashTable.Articulo;
-import HashTable.HashTable;
-import HashTable.ParametroTabla;
+import EDD.Articulo;
+import EDD.HashTable;
+import EDD.ParametroTabla;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;

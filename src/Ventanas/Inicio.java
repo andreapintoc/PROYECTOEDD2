@@ -4,10 +4,10 @@
  */
 package Ventanas;
 
-import HashTable.Articulo;
-import HashTable.HashTable;
-import HashTable.HashTableParametroTabla;
-import HashTable.Nodo;
+import EDD.Articulo;
+import EDD.HashTable;
+import EDD.HashTableParametroTabla;
+import EDD.Nodo;
 
 /**
  *

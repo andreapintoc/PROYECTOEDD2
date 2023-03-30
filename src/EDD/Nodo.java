@@ -1,5 +1,5 @@
 
-package HashTable;
+package EDD;
 
 
 public class Nodo<T> {

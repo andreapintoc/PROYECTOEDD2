@@ -4,12 +4,12 @@
  */
 package Ventanas;
 
-import HashTable.Articulo;
-import HashTable.Nodo;
-import HashTable.HashTable;
-import HashTable.HashTableParametroTabla;
-import HashTable.ListaSimple;
-import HashTable.ParametroTabla;
+import EDD.Articulo;
+import EDD.Nodo;
+import EDD.HashTable;
+import EDD.HashTableParametroTabla;
+import EDD.ListaSimple;
+import EDD.ParametroTabla;
 import javax.swing.JOptionPane;
 
 /**
