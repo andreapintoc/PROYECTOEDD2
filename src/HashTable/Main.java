@@ -5,6 +5,8 @@
  */
 package HashTable;
 
+import Ventanas.Inicio;
+
 /**
  *
  * @author Andrea
@@ -16,7 +18,9 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
+        Inicio inicio = new Inicio();
+        inicio.setLocationRelativeTo(null);
+        inicio.show();
     }
     
 }
